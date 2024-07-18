@@ -4,7 +4,6 @@ import com.google.cloud.vertexai.api.GenerateContentResponse;
 import com.google.cloud.vertexai.generativeai.ChatSession;
 import com.google.cloud.vertexai.generativeai.ResponseHandler;
 import com.security.model.UploadFileRequest;
-import com.security.service.GcpStorageService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,8 +14,9 @@ import java.io.IOException;
 @RequiredArgsConstructor
 public class ChatController {
 
-    private final ChatSession chatSession;
-    private GcpStorageService gcpStorageService;
+    private ChatSession chatSession;
+
+
 
     @PostMapping("/message")
     public String chat(@PathVariable String text) throws IOException {
@@ -27,6 +27,6 @@ public class ChatController {
 
     @PostMapping("/uploadFile")
     public Boolean uploadFile(@PathVariable UploadFileRequest uploadFileRequest) throws IOException {
-        return gcpStorageService.uploadFile(uploadFileRequest.getFileName(),uploadFileRequest.getFile());
+        return false;
     }
 }
