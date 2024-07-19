@@ -19,6 +19,7 @@ public class AuthController {
 
     @PostMapping("/register")
     public ResponseEntity<AuthenticationResponse> register(@RequestBody User user){
+        user.setRole(Role.CARETAKER);
         return ResponseEntity.ok(authService.register(user));
     }
 
